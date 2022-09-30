@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06_html文件中使用template的两种方式</title>
+
+    <style>
+      .container {
+        display: flex;
+        height: 40px;
+      }
+
+      .item {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 20px;
+        box-sizing: border-box;
+      }
+
+      .icon {
+        cursor: pointer;
+        background-color: #ccc;
+        border: 1px solid #ccc;
+      }
+
+      .count {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- 1. <template id="counter"></template> -->
+    <!-- 2. <script type="x-template" id="scriptCounter"></script> -->
+
+    <template id="counter">
+      <div class="container">
+        <div class="item icon" @click="change(-1)">-</div>
+        <div class="item count">{{count}}</div>
+        <!-- <div class="item icon" @click="change(1)">+</div> -->
+        <div class="item icon" @click="test">+</div>
+      </div>
+    </template>
+
+    <!-- <script type="x-template" id="scriptCounter">
+      <div class="container">
+        <div class="item icon" @click="change(-1)">-</div>
+        <div class="item count">{{count}}</div>
+        <div class="item icon" @click="change(1)">+</div>
+      </div>
+    </script> -->
+
+    <script>
+      const app = Vue.createApp({
+        template: `#counter`,
+        data() {
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          change(num) {
+            this.count += num
+            console.log(this) // proxy
+          },
+          test: () => {
+            console.log(this) // window
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>
