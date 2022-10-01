@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11_v-on修饰符</title>
+    <style>
+      .container {
+        height: 600px;
+        width: 200px;
+        background-color: red;
+        overflow-y: auto;
+        display: block;
+      }
+
+      .content {
+        width: 100px;
+        height: 6000px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- https://www.cnblogs.com/ziyunfei/p/5545439.html -->
+    <!-- 1. 多数情况用在移动端滚动的优化 -->
+    <!-- 2. @touchstart.passive="touchstart" 相当于提早告诉浏览器，不需要阻止默认行为 -->
+    <!-- 3. 不使用.passive，回调执行完，浏览器才知道是否需要阻止默认行为 -->
+    <!-- 4. 如下例子，不使用.passive的话，循环结束了，滚动条才开始滚动，明显卡了 -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <a
+        href="https://www.google.com/"
+        target="_blank"
+        class="container"
+        @touchstart="touchstart"
+      >
+        <div class="content"></div>
+      </a>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        methods: {
+          touchstart() {
+            for (let i = 0; i < 50000; i++) {
+              console.log(i)
+            }
+            // 浏览器不知道这里会不会有 e.preventDefault()
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

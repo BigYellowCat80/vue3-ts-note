@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      .message {
+        margin-top: 8px;
+      }
+    </style>
+    <title>02_v-pre</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 用于跳过元素和它的子元素的编译过程，显示原始的Mustache标签 -->
+    <!-- 加快编译速度，但是几乎不用 -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <button @click="btnClick">button</button>
+
+        <div class="message" v-pre>{{message}}</div>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        data() {
+          return {
+            message: "hello world"
+          }
+        },
+        methods: {
+          btnClick() {
+            this.message = "HELLO WORLD"
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

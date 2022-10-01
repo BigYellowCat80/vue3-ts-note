@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09_methods中的this指向什么</title>
+
+    <style>
+      .container {
+        display: flex;
+        height: 40px;
+      }
+
+      .item {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 20px;
+        box-sizing: border-box;
+      }
+
+      .icon {
+        cursor: pointer;
+        background-color: #ccc;
+        border: 1px solid #ccc;
+      }
+
+      .count {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- 指向组件实例的data返回的一个代理对象，因此可以直接this.msg获取 -->
+    <!-- return返回的这个对象就是proxy代理对象，源码中使用bind让this指向了这个代理对象 -->
+
+    <template id="counter">
+      <div class="container">
+        <div class="item icon" @click="change(-1)">-</div>
+        <div class="item count">{{count}}</div>
+        <!-- <div class="item icon" @click="change(1)">+</div> -->
+        <div class="item icon">+</div>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#counter`,
+        data() {
+          return {
+            count: 0
+          }
+        },
+        methods: {
+          change(num) {
+            this.count += num
+            console.log(this) // proxy
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>
