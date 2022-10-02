@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15_v-for和template结合使用</title>
+
+    <style>
+      .line {
+        list-style: none;
+        height: 2px;
+        background-color: black;
+        margin-top: 2px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 这个例子的优点： -->
+    <!-- 1. 没有产生额外的div -->
+    <!-- 2. ul里面直接就是嵌套li -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <ul>
+          <template v-for="(value, key) in person" :key="key">
+            <li>{{key}}</li>
+            <li>{{value}}</li>
+            <li class="line"></li>
+          </template>
+        </ul>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        data() {
+          return {
+            person: {
+              name: "coderwhy",
+              age: 18,
+              height: 1.88
+            }
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

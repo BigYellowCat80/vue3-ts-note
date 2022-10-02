@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14_v-for的3种使用</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 1. 遍历数组 -->
+    <!-- 2. 遍历对象 -->
+    <!-- 3. 遍历数字 v-for="(num, index) in 10" -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <ul>
+          <li v-for="(num, index) in 10" :key="index">{{num}} - {{index}}</li>
+        </ul>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

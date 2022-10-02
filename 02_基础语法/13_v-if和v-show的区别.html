@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13_v-if和v-show的区别</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 本质区别： -->
+    <!-- v-if是对应的元素不会被渲染到DOM中 -->
+
+    <!-- 用法区别： -->
+    <!-- 1. v-show是不支持template的 -->
+    <!-- 2. v-show不可以和v-else一起使用 -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container"></div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

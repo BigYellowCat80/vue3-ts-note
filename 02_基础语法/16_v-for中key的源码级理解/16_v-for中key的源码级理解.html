@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16_v-for中key的源码级理解</title>
+    <style>
+      .img {
+        border: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 1. key的作用是：旧的VNodes新的VNodes根据diff算法对比的唯一标识符 -->
+    <!-- 2. 有key时，调用patchKeyedChildren方法；没有key时，调用patchUnkeyedChildren方法 -->
+
+    <!-- 源码过程： -->
+    <!-- 没有key时，调用patchUnkeyedChildren方法。  -->
+    <!-- 第1步：先拿到旧的VNodes长度和新的VNodes长度作对比，取较小的那个，开始遍历。在这个例子里，旧的a和新的a调用一下patch方法，不用更新。然后，旧的b和新的b调用一下patch方法，不用更新 -->
+    <!-- 第2步：然后，旧的c和新的f调用一下patch方法，发生更新。旧的d和新的c调用一下patch方法，发生更新 -->
+    <!-- 第3步：此时遍历完成。如果旧的VNodes长度长点，把多余的去掉；如果新的VNodes长度长点，全部挂载上去-->
+
+    <!-- 有key时，调用patchKeyedChildren方法。 -->
+    <!-- 第1步：先一个while循环，判断旧的a和新的a根据type和key是否都一样，一样的话，旧的a和新的a进行patch，没有更新。然后，旧的b和新的b进行patch，没有更新。旧的c和新的f不一样了，break结束while循环 -->
+    <!-- 第2步：尾部开始再来一个while循环，跟上面一样，旧的d和新的dpatch，旧的c和新的c进行patch，然后break -->
+    <!-- 第3步：如果旧的节点遍历完了，依然有新的节点，那么新的节点挂载 -->
+    <!-- 第4步：如果新的节点遍历完了，依然有旧的节点，那么旧的节点移除 -->
+    <!-- 第5步：最后处理中间的无序更新。尽量从旧的VNode里找到一样的新的VNode进行patch -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <div>
+          <div>patchUnkeyedChildren方法</div>
+          <img class="img" src="./patchUnkeyedChildren.png" alt="" />
+        </div>
+
+        <div>
+          <div>patchKeyedChildren方法</div>
+          <img class="img" src="./patchKeyedChildren.png" alt="" />
+        </div>
+
+        <ul>
+          <li v-for="(letter, index) in letters">{{letter}}</li>
+        </ul>
+
+        <button @click="insertF">insertF</button>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+
+        data() {
+          return {
+            letters: ["a", "b", "c", "d"]
+          }
+        },
+        methods: {
+          insertF() {
+            this.letters.splice(2, 0, "f")
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>
