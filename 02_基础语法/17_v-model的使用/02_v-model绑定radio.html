@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_v-model绑定radio</title>
+    <style>
+      .text {
+        margin-left: 4px;
+      }
+
+      .result {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 这个案例这样绑定v-model是没有问题的，因为:key="id" -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <form action="">
+          <ul>
+            <li v-for="(item, index) in hobbies" :key="id">
+              <label>
+                <input type="radio" v-model="hobbyValue" :value="item" />
+                <span class="text">{{item.text}}</span>
+              </label>
+            </li>
+          </ul>
+        </form>
+
+        <div class="result">您的爱好是：{{hobbyValue}}</div>
+        <button @click="insertSwimming">insertSwimming</button>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        data() {
+          return {
+            hobbies: [
+              {
+                id: "bashetball",
+                text: "篮球"
+              },
+              {
+                id: "football",
+                text: "足球"
+              },
+              {
+                id: "tennis",
+                text: "网球"
+              }
+            ],
+            hobbyValue: {}
+          }
+        },
+        methods: {
+          insertSwimming() {
+            this.hobbies.splice(2, 0, {
+              id: "swimming",
+              text: "游泳"
+            })
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

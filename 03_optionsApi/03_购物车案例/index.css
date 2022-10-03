@@ -1,0 +1,25 @@
+.container {
+  width: 800px;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+}
+
+.table th,
+.table td {
+  padding: 2px;
+}
+
+td .count {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.total-price {
+  margin-top: 8px;
+}

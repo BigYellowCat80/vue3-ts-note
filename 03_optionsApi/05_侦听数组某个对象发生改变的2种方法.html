@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_侦听数组某个对象发生改变的2种方法</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 1. 开启深度侦听（不推荐） -->
+    <!-- 2. 组件化开发中，把listItemc传入到组件中，在组件中进行侦听（推荐） -->
+    <!-- <BaseFriend :friend="friend">，然后在组件里面侦听"friend.name" -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container"></div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>

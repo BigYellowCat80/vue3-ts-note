@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" type="text/css" />
+    <title>03_购物车案例</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 案例总结： -->
+    <!-- changeCount和remove方法直接传入了index，就不用通过id再遍历一遍找到了 -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <h3>您的购物车：</h3>
+        <div class="empty-container" v-if="books.length<=0">
+          <img src="./img/empty.png" alt="" />
+        </div>
+        <template v-else>
+          <table class="table" border="1">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>书籍名称</th>
+                <th>出版日期</th>
+                <th>单价</th>
+                <th>购买数量</th>
+                <th>单项总价</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="({id, bookName, publishDate, price, count}, index) in books"
+                :key="id"
+              >
+                <td>{{index+1}}</td>
+                <td>《{{bookName}}》</td>
+                <td>{{publishDate}}</td>
+                <td>{{price.toFixed(2)}}</td>
+                <td>
+                  <button @click="changeCount(index, -1)" :disabled="count<=1">
+                    -
+                  </button>
+                  <span class="count">{{count}}</span>
+                  <button @click="changeCount(index, 1)">+</button>
+                </td>
+                <td>{{(price*count).toFixed(2)}}</td>
+                <td><button @click="remove(index)">移除</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="total-price">总价：{{totalPrice.toFixed(2)}}</div>
+        </template>
+      </div>
+    </template>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

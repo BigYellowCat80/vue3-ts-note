@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_watch默认侦听不到对象里某个属性的变化</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 默认： -->
+
+    <!-- 1. 整个info换掉可以侦听到 -->
+    <!-- 2. info.name改变了侦听不到 -->
+    <!-- changeInfoName触发时，watch没跑 -->
+
+    <!-- 解决办法： -->
+    <!-- 1. 深度侦听 -->
+    <!-- 2. 侦听'info.name' -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <h3>{{info.name}}</h3>
+        <div>
+          <button @click="changeInfo">change info</button>
+          <button @click="changeInfoName">change info.name</button>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        data() {
+          return {
+            info: {
+              name: "why",
+              age: 18
+            }
+          }
+        },
+        watch: {
+          info(val) {
+            console.log("watch", val)
+          }
+        },
+        methods: {
+          changeInfo() {
+            this.info = {
+              name: "coderwhy",
+              age: 18
+            }
+          },
+          changeInfoName() {
+            this.info.name = "coderwhy"
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>
