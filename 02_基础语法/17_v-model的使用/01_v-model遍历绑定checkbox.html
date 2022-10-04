@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>02_v-model绑定radio</title>
+    <title>01_v-model遍历绑定checkbox</title>
     <style>
       .text {
         margin-left: 4px;
-      }
-
-      .result {
-        margin-bottom: 8px;
       }
     </style>
   </head>
@@ -29,19 +25,14 @@
 
     <template id="template">
       <div class="container">
-        <form action="">
-          <ul>
-            <li v-for="(item, index) in hobbies" :key="id">
-              <label>
-                <input type="radio" v-model="hobbyValue" :value="item" />
-                <span class="text">{{item.text}}</span>
-              </label>
-            </li>
-          </ul>
-        </form>
-
-        <div class="result">您的爱好是：{{hobbyValue}}</div>
-        <button @click="insertSwimming">insertSwimming</button>
+        <ul>
+          <li v-for="(item, index) in hobbies" :key="item.id">
+            <label>
+              <input type="checkbox" v-model="item.checked" />
+              <span class="text">{{item.text}}</span>
+            </label>
+          </li>
+        </ul>
       </div>
     </template>
 
@@ -53,26 +44,25 @@
             hobbies: [
               {
                 id: "bashetball",
-                text: "篮球"
+                text: "篮球",
+                checked: false
               },
               {
                 id: "football",
-                text: "足球"
+                text: "足球",
+                checked: false
               },
               {
                 id: "tennis",
-                text: "网球"
+                text: "网球",
+                checked: false
               }
-            ],
-            hobbyValue: {}
+            ]
           }
         },
-        methods: {
-          insertSwimming() {
-            this.hobbies.splice(2, 0, {
-              id: "swimming",
-              text: "游泳"
-            })
+        computed: {
+          hobbyValues() {
+            return this.hobbies.filter((el) => el.checked)
           }
         }
       })

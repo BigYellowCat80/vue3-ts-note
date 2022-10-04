@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_打包es6和commonjs</title>
+  </head>
+  <body>
+    <!-- 操作步骤： -->
+    <!-- 1. 根目录新建src文件夹 -->
+    <!-- 2. src下新建index.js，新建js文件夹 -->
+    <!-- 3. src/js文件夹下新建math.js, formatNumber.js -->
+    <!-- 4. src文件夹下的index.js引入js文件夹里面的方法 -->
+    <!-- 5. 命令行输入webpack，则进行打包 -->
+    <!-- 6. 打包后默认在根目录下生成dist文件夹，里面只有main.js -->
+    <!-- 7. 这时候根目录下的html文件可以直接引入dist下的main.js使用 -->
+
+    <script src="./dist/main.js"></script>
+  </body>
+</html>

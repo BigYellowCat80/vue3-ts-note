@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_注册局部组件</title>
+    <style>
+      .container {
+        padding: 20px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- 为什么建议注册局部组件 -->
+    <!-- 进行了全局注册，不用用没用到，打包的时候都带上，增加了包的体积 -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <Counter></Counter>
+        <Counter></Counter>
+        <Counter></Counter>
+        <Counter></Counter>
+        <Counter></Counter>
+      </div>
+    </template>
+
+    <template id="counter">
+      <button>counter</button>
+    </template>
+
+    <script>
+      // 注册局部组件
+      const Counter = {
+        template: `#counter`
+      }
+
+      const App = {
+        template: `#template`,
+        components: {
+          Counter
+        }
+      }
+
+      const app = Vue.createApp(App)
+      app.mount("#app")
+    </script>
+  </body>
+</html>

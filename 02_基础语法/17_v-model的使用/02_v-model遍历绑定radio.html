@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01_v-model绑定多选框</title>
+    <title>02_v-model遍历绑定radio</title>
     <style>
       .text {
         margin-left: 4px;
-      }
-
-      .result {
-        margin-bottom: 8px;
       }
     </style>
   </head>
@@ -30,15 +26,13 @@
     <template id="template">
       <div class="container">
         <ul>
-          <li v-for="({id, text}, index) in hobbies" :key="id">
+          <li v-for="(item, index) in hobbies" :key="item.id">
             <label>
-              <input type="checkbox" v-model="hobbies[index].checked" />
-              <span class="text">{{text}}</span>
+              <input type="radio" v-model="hobbiyValue" :value="item" />
+              <span class="text">{{item.text}}</span>
             </label>
           </li>
         </ul>
-        <div class="result">您的爱好是：{{resultHobbyNames}}</div>
-        <button @click="insertSwimming">insertSwimming</button>
       </div>
     </template>
 
@@ -50,37 +44,18 @@
             hobbies: [
               {
                 id: "bashetball",
-                text: "篮球",
-                checked: false
+                text: "篮球"
               },
               {
                 id: "football",
-                text: "足球",
-                checked: false
+                text: "足球"
               },
               {
                 id: "tennis",
-                text: "网球",
-                checked: false
+                text: "网球"
               }
-            ]
-          }
-        },
-        computed: {
-          resultHobbies() {
-            return this.hobbies.filter((el) => el.checked)
-          },
-          resultHobbyNames() {
-            return this.resultHobbies.map((el) => el.id)
-          }
-        },
-        methods: {
-          insertSwimming() {
-            this.hobbies.splice(2, 0, {
-              id: "swimming",
-              text: "游泳",
-              checked: true
-            })
+            ],
+            hobbiyValue: ""
           }
         }
       })

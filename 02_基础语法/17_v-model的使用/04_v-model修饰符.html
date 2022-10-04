@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_v-model修饰符</title>
+    <style>
+      .item {
+        margin-bottom: 8px;
+      }
+
+      .item span {
+        margin-right: 8px;
+      }
+
+      .item span:last-child {
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- .lazy @change时触发 -->
+    <!-- .number -->
+    <!-- .trim -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.js"
+      integrity="sha512-B0lt/3eR0uw6f6nET4+8gXtJibWLj3l++g8/kIg7EoBWWopzc9wzsPjykTF4YrSHear/fWxFyJG1zruwDfdTZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <template id="template">
+      <div class="container">
+        <!-- .lazy @change时触发 -->
+
+        <div class="item">
+          <span>v-model.lazy</span>
+          <input type="text" v-model.lazy="lazyText" />
+          <span>{{lazyText}}</span>
+        </div>
+
+        <!-- .number -->
+        <div class="item">
+          <span>v-model.number</span>
+          <input type="text" v-model.number="numberText" />
+          <span>{{numberText}}</span>
+        </div>
+
+        <!-- .trim -->
+      </div>
+    </template>
+
+    <script>
+      const app = Vue.createApp({
+        template: `#template`,
+        data() {
+          return {
+            lazyText: "",
+            numberText: "",
+            lazyText: ""
+          }
+        }
+      })
+      app.mount("#app")
+    </script>
+  </body>
+</html>
