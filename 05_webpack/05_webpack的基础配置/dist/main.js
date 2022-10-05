@@ -1,0 +1,1 @@
+(()=>{var r={723:r=>{r.exports={formatNumber:function(r){return r.toFixed(2)}}}},o={};function t(e){var n=o[e];if(void 0!==n)return n.exports;var s=o[e]={exports:{}};return r[e](s,s.exports,t),s.exports}(()=>{"use strict";const{formatNumber:r}=t(723);console.log(300),console.log(r(18.88))})()})();

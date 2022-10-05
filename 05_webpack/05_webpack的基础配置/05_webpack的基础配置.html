@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_使用局部webpack打包es6和commonjs的3种方法</title>
+  </head>
+  <body>
+    <!-- 1. 使用局部webpack打包后，会默认找到根目录下的src下的index.js打包 -->
+    <!-- 2. 指定入口和出口：npx webpack --entry ./src/main.js --output-path ./dist/build -->
+    <!-- 3. 真实开发中，会在根目录新建一个webpack.config.js文件 -->
+
+    <script src="./dist/main.js"></script>
+  </body>
+</html>

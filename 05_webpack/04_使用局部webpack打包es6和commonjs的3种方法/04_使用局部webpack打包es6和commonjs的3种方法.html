@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>04_使用局部webpack打包es6和commonjs</title>
+    <title>04_使用局部webpack打包es6和commonjs的3种方法</title>
   </head>
   <body>
     <!-- 步骤： -->
     <!-- 命令行输入webpack，默认使用的是全局的webpack打包 -->
 
-    <!-- 两种方法使用本地的webpack打包 -->
+    <!-- 三种方法： -->
     <!-- 方法1：命令行输入 ./node_modules/.bin/webpack -->
     <!-- 方法2：命令行输入 npx webpack -->
     <!-- 因为执行npx时会优先去node_modules下的.bin去找 -->
+    <!-- 方法3：在package.json里的scripts属性下添加脚本 "build":"webpack"即可，默认会使用本地的webpack打包 -->
 
     <script src="./dist/main.js"></script>
   </body>
