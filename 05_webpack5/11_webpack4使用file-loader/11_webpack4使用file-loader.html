@@ -7,8 +7,19 @@
     <title>11_webpack4使用file-loader</title>
   </head>
   <body>
+    <!-- file-loader的作用是处理import/require引入的文件资源 -->
+    <!-- webpack5中已经不推荐使用file-loader和url-loader了，因为vue和react的脚手架目前使用的是webpack4 -->
+
     <!-- 步骤： -->
-    <!--  -->
+    <!-- 1. 安装：npm i file-loader@6.2.0 -D -->
+    <!-- 2. 官网看配置 -->
+
+    <!-- options: -->
+    <!-- [ext] 处理文件的拓展名 -->
+    <!-- [name] 处理文件的名称 -->
+    <!-- [hash:<length>] 从默认的32个截取长度 -->
+    <!-- [contentHash] 在file-loader中和[hash]结果是一致的（在webpack的其他一些地方不一样） -->
+    <!-- [path] 文件相对于webpack配置的路径 -->
 
     <script src="./build/bundle.js"></script>
   </body>

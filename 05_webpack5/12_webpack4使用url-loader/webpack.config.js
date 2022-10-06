@@ -21,15 +21,14 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpg|gif)$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: "url-loader",
             options: {
-              // outputPath: "img", // 这么写的意思是打包后的图片放在这个文件夹内
-              // name: "[name]_[hash:6].[ext]",
               name: "img/[name]_[hash:6].[ext]",
-            }, // 这是outputPath和name的合并写法
+              limit: 100 * 1024,
+            }, // 这样配置的话，小于100kb的图片就使用base64编码，那么在这个案例中最后只打包了大于100kb的图片。如果不写limit属性，默认对所有图片都进行base64编码，这样buldle.js文件就太大了
           },
         ],
       },
