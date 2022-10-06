@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13_webpack5中加载图片使用asset-module-type</title>
+  </head>
+  <body>
+    <!-- webpack4可以使用file-loader或者url-loader加载图片资源，webpack5中使用asset module type -->
+
+    <!-- assset/resource 相当于webpack4中的file-loader，所有图片直接打包 -->
+    <!-- asset/inline 相当于webpack4中的url-loader，所有图片使用base64编码 -->
+    <!-- assset/source 相当于webpack4中的raw-loader，很少使用。导出资源的源代码 -->
+    <!-- asset 相当于webpack4中的url-loader，可以根据限制选择使用base64打包图片，最常用是这个-->
+
+    <!-- 步骤： -->
+    <!-- 1. 直接使用，不用安装 -->
+    <!-- 2. 官网看配置 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>

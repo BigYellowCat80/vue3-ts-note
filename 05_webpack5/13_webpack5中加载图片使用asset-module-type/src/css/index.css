@@ -1,0 +1,13 @@
+.img-bg {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+  background: url(../img/199kb.png) no-repeat 0 0 / cover;
+}
+
+.img-src {
+  margin-top: 8px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ccc;
+}
