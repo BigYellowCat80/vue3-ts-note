@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17_插件CleanWebpackPlugin的使用</title>
+  </head>
+  <body>
+    <!-- CleanWebpackPlugin的作用： -->
+    <!-- 打包的时候把dist文件夹先删掉，再打包 -->
+    <!-- 如何证明是有先删掉？可以现在dist文件夹新增一个test.txt文件，重新打包，这个test.txt仍在。但是如果使用了CleanWebpackPlugin，打包后这个test.txt就没有了 -->
+
+    <!-- 使用步骤： -->
+    <!-- 1. 安装：npm i clearn-webpack-plugin@4.0.0 -D -->
+    <!-- 2. 引入调用 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>

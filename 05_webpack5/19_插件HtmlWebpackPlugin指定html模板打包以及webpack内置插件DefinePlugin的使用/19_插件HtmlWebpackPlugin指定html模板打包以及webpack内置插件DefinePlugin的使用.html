@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      19_插件HtmlWebpackPlugin指定html模板打包以及webpack内置插件DefinePlugin的使用
+    </title>
+  </head>
+  <body>
+    <!-- DefinePlugin的作用： -->
+    <!-- 定义html模板里的全局变量，如vue3脚手架创建出来的项目里public文件夹里面的index.html里的BASE_URL -->
+
+    <!-- 使用步骤： -->
+    <!-- 1. 将vue3脚手架创建出来的项目的public文件夹复制过来到这个项目里 -->
+    <!-- 2. HtmlWebpackPlugin调用时传入template属性 -->
+    <!-- 3. BASE_URL的处理：调用DefinePlugin并传入模板的全局变量BASE_URL -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
