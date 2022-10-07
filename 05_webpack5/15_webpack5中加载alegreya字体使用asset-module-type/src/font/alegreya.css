@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "alegreya"; /* Project id 3688942 */
+  src: url("Alegreya-Regular.ttf?t=1665084500590") format("truetype"),
+    url("Alegreya-Italic.ttf?t=1665084500590") format("truetype"),
+    url("Alegreya-Bold.ttf?t=1665084500590") format("truetype"),
+    url("Alegreya-BoldItalic.ttf?t=1665084500590") format("truetype");
+}
+
+.alegreya {
+  font-family: "alegreya" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
