@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>21_打包后有报错很难找到错误可以结合mode和source-map解决</title>
+  </head>
+  <body>
+    <!-- 操作步骤： -->
+    <!-- 1. 比如在element.js里面随便写一个错误，console.log(content.length) -->
+    <!-- 2. 导报后就会报错：content is not defined，但是这个时候点进去是压缩后的JS文件，很难找出问题 -->
+    <!-- 这个使用把mode写成development，并且devtool属性改成source-map即可 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_babel把es6转成es5</title>
+  </head>
+  <body>
+    <!-- 如果在命令行使用babel，步骤： -->
+    <!-- 1. 安装@babel/core（babel的核心代码，必须安装）：npm i @babel/core@7.14.3 -D -->
+    <!-- 2. 安装@babel/cli（让我们可以在命令行使用babel）：npm i @babel/cli@7.14.3 -D（如果在webpack中使用就不用安装@babel/cli） -->
+    <!-- 3. npx babel src/index.js --out-dir dist （--out-dir是输出的意思，如果写成npx babel src/index.js --out-file test.js则生成的JS文件名是test.js） -->
+    <!-- 4. 但是以上的过程打包后的js文件里仍是ES6，因为babel使用不用的功能，需要不同的插件。比如将箭头函数转成普通函数，需要用到插件npm i @babel/plugin-transform-arrow-functions@7.13.0 -D -->
+    <!-- 5. 使用：npx babel src/index.js --out-dir dist --plugins=@babel/plugin-transform-arrow-functions 这样就把箭头函数转成普通函数了 -->
+    <!-- 6. 如果需要把const转成var，需要另外一个插件。npm i @babel/plugin-transform-block-scoping@7.14.2 -D -->
+    <!-- 7. 两个插件一起使用：npx babel src/index.js --out-dir dist --plugins=@babel/plugin-transform-arrow-functions,@babel/plugin-transform-block-scoping 这样箭头函数和const都转成ES5了 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
