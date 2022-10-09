@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11.vue不同版本的说明</title>
+  </head>
+  <body>
+    <!-- 1. vue(.runtime).global(.prod).js 默认script和cdn使用的都是vue.global.js，会暴露一个全局的Vue -->v
+
+    <!-- 2. vue(.runtime).esm-browser(.prod).js 用于通过原生ES模块导入使用，在浏览器中通过<script type="module">来使用 -->
+
+    <!-- 3. vue(.runtime).esm-bundler.js 用于webpack、rollup、parcel等构建工具中。构建工具中默认使用的是vue.runtime.esm-bundler.js -->
+
+    <!-- 4. vue.cjs(.prod).js 服务端渲染使用，通过require在nodejs中使用 -->
+  </body>
+</html>

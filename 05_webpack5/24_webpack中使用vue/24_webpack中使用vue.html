@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24_webpack中使用vue</title>
+  </head>
+  <body>
+    <!-- 步骤： -->
+    <!-- 1. 安装vue：npm i vue@next -->
+    <!-- 2. 写入以下代码： -->
+    <!-- 
+      const App = {
+        template: "<h3>hello world</h3>",
+      };
+      const app = createApp(App);
+      app.mount("#app");
+     -->
+    <!-- 3. 然后就会报错：runtime-core.esm-bundler.js:38 [Vue warn]: Component provided template option but runtime compilation is not supported in this build of Vue. Configure your bundler to alias "vue" to "vue/dist/vue.esm-bundler.js".  -->
+    <!-- 4. 是因为：vue主要分两个版本。第一个是runtime+compiler，专门对带有template属性的情况编译使用，而默认的是runtime only版本。没有template也是有两种方法可以使用的。一是使用render函数，而是使用.vue文件 -->
+    <!-- 5. 构建工具中默认使用的是vue.runtime.esm-bundler.js。如果我们需要解析template属性，那么需要手动指定vue.esm-bundler.js -->
+    <!-- 6. 因此，导入方式为：import { createApp } from "vue/dist/vue.esm-bundler.js" -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
