@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      26_webpack中使用vue-loader并配置是否可以支持options-api以及生产环境是否支持dev-tools
+    </title>
+  </head>
+  <body>
+    <!-- 警告内容：Feature flags __VUE_OPTIONS_API__, __VUE_PROD_DEVTOOLS__ are not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle. -->
+
+    <!-- 步骤： -->
+    <!-- 1. 点进警告提示的网址 -->
+    <!-- 
+      __VUE_OPTIONS_API__: false, // 默认true。如果设置false的话，不再支持options api，并且打包的时候会做tree shaking，把vue中支持options api的这段代码去掉，打包体积更小
+      __VUE_PROD_DEVTOOLS__: true, // 默认false。是否要在生产环境支持dev tools
+     -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
