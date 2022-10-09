@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>28_webpack-dev-server的配置</title>
+  </head>
+  <body>
+    <!-- 1. contentBase属性：一般就是设置为"./public"，意思是没有从webpack中获取的内容，或者public文件夹中读取（可以把CopyWebpackPlugin注释掉测试下，看favicon.ico是否显示）如果本地很多mp3或者mp4资源，不想再开发阶段copy过去，可以先把CopyWebpackPlugin注释掉，打包的时候再开启 -->
+
+    <!-- 2. hot属性：就是HMR热更新hot module replacement。应用程序在运行过程中，替换、添加、删除模块，而无需重新刷新整个页面。为什么需要HMR？一是因为有些状态存在内存中，我们不希望更改了其他一个模块这个状态就没了，而是因为性能问题，更改了一个模块，没必要整个页面刷新。默认webpack-devserver的hot是开启的，值是true。如果设置为false，修改了源代码后整个页面都会刷新。设置为true后，有时候会出问题，最好给webpack第一层属性加个target:"web"。最后还有一步，引入的时候，比如引入element.js要如下方式引入：  -->
+    <!-- 
+      if(module.hot){module.hot.accept("./js/element",())=>{}}
+     -->
+
+    <!-- 3. 但真实开发中，不需要每个模块都这样写HMR，比如vue项目的vue-loader已经帮我们做了这件事情，默认vue文件都开启了 -->
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>

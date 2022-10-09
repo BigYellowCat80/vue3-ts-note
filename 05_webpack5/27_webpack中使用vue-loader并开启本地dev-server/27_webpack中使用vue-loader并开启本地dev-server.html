@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>27_webpack中使用vue-loader并开启本地dev-server</title>
+  </head>
+  <body>
+    <!-- webpack自动编译有以下3种方式： -->
+    <!-- 1. webpack的watch模式（package.json修改build的值为webpack --watch或者在webpack.config.js中顶层属性配置watch:true。那么只要有一个地方发生了更新，webpack自动重新编译代码。然后live server帮我们做了刷新） -->
+    <!-- 2. webpack-dev-server（推荐使用） -->
+    <!-- 3. webpack-dev-middleware -->
+
+    <!-- webpack-dev-server的使用： -->
+    <!-- 1. 安装：npm i webpack-dev-server@3.11.2 -D -->
+    <!-- 2. package.json添加脚本 "serve":"webpack serve" -->
+    <!-- 3. npm run serve -->
+
+    <!-- webpack-dev-server在编译之后不会写入到dist文件夹中，而是将打包后的文件保存在内存中，这样可以提高开发效率，少了读取本地文件这一步骤。这个保存在内存中是通过一个叫memfs的库实现的 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
