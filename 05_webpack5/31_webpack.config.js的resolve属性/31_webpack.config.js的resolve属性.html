@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>31_webpack.config.js的resolve属性</title>
+  </head>
+  <body>
+    <!-- 该属性的作用： -->
+    <!-- 用于设置模块如何被解析，如果.js可以不加，起别名等 -->
+
+    <!-- webpack能解析3种路径：绝对路径、相对路径、模块路径（一般是第三方的库） -->
+
+    <!-- 解析模块路径会去node_modules文件夹找是因为resolve属性中默认的modules属性的值是["node_modules"] -->
+
+    <!-- resolve属性里面的属性有：extensions用于文件后缀是否需要添加。默认是[".js",".json",".mjs",".wasm",]，因此在引入的时候js文件可以不加后缀 -->
+
+    <!-- webpack会判断引入的是文件还是文件夹，如果是文件，文件具有拓展名则直接解析，如果没有拓展名，则去extensions里面去找。如果是一个文件夹，会根据resolve.mainFiles配置选项中指定的文件顺序查找，resolve.mainFiles的默认值是["index"]，因此引入文件夹时默认会找index开头的文件，再根据extensions来解析拓展名 -->
+
+    <!-- 详情可以查看本项目的webpack.config.js -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>

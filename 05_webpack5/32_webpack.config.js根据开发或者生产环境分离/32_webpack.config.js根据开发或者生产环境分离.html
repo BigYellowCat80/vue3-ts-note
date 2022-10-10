@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>32_webpack.config.js根据开发或者生产环境分离</title>
+  </head>
+  <body>
+    <!-- 为什么需要分离： -->
+    <!-- 因为默认不管是开发还是生产环境下的webpack配置都是写在webpack.config.js里面，太乱了可以分离一下 -->
+
+    <!-- 步骤： -->
+    <!-- 1. 安装：npm i webpack-merge@5.7.3 -D -->
+    <!-- 2. 根目录下新建config文件夹，新建webpack.common.config.js, webpack.dev.config.js, webpack.prod.config.js -->
+    <!-- 3. 把原本webpack.config.js里面的所有内容复制粘贴到webpack.common.config.js中，然后根据情况分别剪切到webpack.dev.config.js和webpack.prod.config.js -->
+    <!-- 4. package.json中的webpack脚本改成以下代码： -->
+    <!-- 
+       "build":"webpack --config ./config/webpack.prod.config.js",
+       "serve":"webpack serve --config ./config/webpack.dev.config.js"
+     -->
+    <!-- 5. 引入const {merge} =require("webpack-merge")，并分别在webpack.dev.config.js和webpack.prod.config.js中调用 -->
+    <!-- 6. 尝试打包，报错：Field 'browser' doesn't contain a valid alias configuration。因为在webpack.common.config.js中，alias的 "@": path.resolve(__dirname, "./src")要改成 "@": path.resolve(__dirname, "../src") -->
+    <!-- 7. 再次打包，成功，但是发现build文件夹在config里面，因此再改改output的path属性为path: getAbsolutePath("../build"), -->
+    <!-- 8. 再次打包，没有问题 -->
+    <!-- 9. 测试开发环境有没问题：npm run serve，直接成功，没有任何问题 -->
+
+    <script src="./build/bundle.js"></script>
+  </body>
+</html>
