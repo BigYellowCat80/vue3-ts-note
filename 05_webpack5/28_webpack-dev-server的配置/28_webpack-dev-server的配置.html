@@ -15,6 +15,16 @@
      -->
 
     <!-- 3. 但真实开发中，不需要每个模块都这样写HMR，比如vue项目的vue-loader已经帮我们做了这件事情，默认vue文件都开启了 -->
+
+    <!-- 4. host属性：默认值是localhost，如果希望其他地方也能访问，可以设置为0.0.0.0，那么在同一网络下，通过IP地址可以访问 -->
+
+    <!-- 5. port属性 -->
+
+    <!-- 6. open属性。默认打开浏览器，也可以在package.json的webpack脚本中加webpack --open -->
+
+    <!-- 7. compress属性：是否为静态文件开启gzip compression。默认是false。开启后更快。关系不是很大，因为是访问自己的服务器 -->
+
+    <!-- 8. proxy属性：代理配置。一般是开发阶段跨域问题才需要前端处理。生产阶段可以把静态资源和后端代码放在同一个服务器、或者后端开启跨域、或者nginx代理 -->
     <script src="./build/bundle.js"></script>
   </body>
 </html>
