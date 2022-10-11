@@ -1,0 +1,18 @@
+{
+  "name": "vite-note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "less": "^4.1.1",
+    "vite": "^2.3.6"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
