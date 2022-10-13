@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_src_非props的Attribute</title>
+  </head>
+  <body>
+    <!-- 如果给子组件传入了属性，但是在子组件没有用props接受（比如class、id等属性），那么： -->
+
+    <!-- 1. 如果子组件有根节点，那么子组件的根节点上自动加上这个属性，称之为属性的继承。如果不希望继承这个属性，可以在子组件中设置inheritAttrs:false。一般不会去设置，但是如果是希望仅仅给子组件的某个元素使用，可以在子组件中使用$attrs.class获取 -->
+
+    <!-- 2. 如果子组件有多个根节点，会报警告。因为不知道这个属性应该放在哪个根节点上面。解决办法：明确给子组件的某个根节点绑定上:class="$attrs.class" -->
+  </body>
+</html>

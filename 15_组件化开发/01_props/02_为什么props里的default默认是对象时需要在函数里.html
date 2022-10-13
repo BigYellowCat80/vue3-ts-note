@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_为什么props里的default默认是对象时需要在函数里</title>
+  </head>
+  <body>
+    <!-- 因为如果这个组件在多个地方使用了，他们default里这个默认对象指向的是同个地址。因为props的default是引用类型时都需要在函数内return出去 -->
+  </body>
+</html>
