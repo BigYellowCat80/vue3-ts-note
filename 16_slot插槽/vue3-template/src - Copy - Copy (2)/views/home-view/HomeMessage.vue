@@ -1,13 +1,10 @@
 <template>
-  <div>TabShoes</div>
+  <div class="home-message"></div>
 </template>
 
 <script>
 export default {
-  name: "TabShoes",
-  mounted() {
-    console.log("TabShoes mounted");
-  },
+  name: "HomeMessage",
 };
 </script>
 

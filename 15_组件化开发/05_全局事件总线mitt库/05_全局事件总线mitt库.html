@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05_全局事件总线mitt库</title>
+  </head>
+  <body>
+    <!-- vue3从实例中移除了$on, $off, $once等方法，因此需要使用一些全局事件总线库，例如mitt或者tiny-emitter，两个都是官方推荐 -->
+
+    <!-- mitt的使用步骤： -->
+    <!-- 1. 安装：npm i mitt -->
+    <!-- 2. 封装一个eventbus.js，代码如下： -->
+    <!-- 
+      import mitt from "mitt";
+      const emitter = mitt();
+      export default emitter;
+    -->
+
+    <!-- 3. 触发的组件中： -->
+    <!-- 
+      import emitter from "@/plugins/eventbus";
+      
+      methods: {
+          sendData() {
+            emitter.emit("MESSAGE", this.message);
+          },
+        },
+    -->
+
+    <!-- 4. 接受的组件中： -->
+    <!-- 
+      import emitter from "@/plugins/eventbus";
+
+      mounted() {
+        emitter.on("MESSAGE", (data) => {
+          console.log("data", data);
+          this.aboutViewData = data;
+        });
+      },
+    -->
+
+    <!-- 5. 还可以监听所有类型事件： -->
+    <!-- 
+      mounted() {
+        emitter.on("*", (type, data) => {
+          console.log(type, data);
+        });
+      },
+    -->
+
+    <!-- 6. 取消监听： -->
+    <!-- 全部取消
+      emitter.all.clear()
+    -->
+
+    <!-- 取消某个
+      定义一个函数：
+      function onFoo(){}
+      emitter.on("foo", onFoo); // 监听
+      emitter.off("foo", onFoo); // 取消监听
+    -->
+  </body>
+</html>

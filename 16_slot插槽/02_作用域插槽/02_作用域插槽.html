@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_作用域插槽</title>
+  </head>
+  <body>
+    <!-- 现在有这么一个需求：list在父组件里，list传给子组件，在子组件里遍历渲染。并且，有时候需要显示为button，有时候是b元素（加粗），这个时候就需要用到作用域插槽，因为在父组件中这个button里面的文字是需要从子组件去取的 -->
+
+    <!-- 步骤： -->
+    <!-- 1. 父组件中定义好list，传给这个HomeList子组件 -->
+    <!-- 2. 子组件中遍历，并且在li标签里面写入<slot></slot>元素，通过<slot>把item传回去，<slot :item="item" :index="index"></slot> -->
+    <!-- 3. 在父组件中，HomeList组件的内部写入<template v-slot="{item, index}"> <button>{{item.name}}</button> </template> -->
+  </body>
+</html>
