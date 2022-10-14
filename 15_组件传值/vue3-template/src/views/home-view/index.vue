@@ -1,31 +1,60 @@
 <template>
   <div class="home">
-    <h3>HomeView</h3>
-    <button @click="sendData">mitt</button>
+    <HomeTabs :home-tabs="homeTabs" @tabClick="tabClick" />
+
+    <component :is="renderComponent"></component>
   </div>
 </template>
 
 <script>
-import emitter from "@/plugins/eventbus";
+import HomeTabs from "./HomeTabs.vue";
+import TabClothes from "./TabClothes.vue";
+import TabShoes from "./TabShoes.vue";
+import TabPants from "./TabPants.vue";
+const contentList = ["TabClothes", "TabShoes", "TabPants"];
 
 export default {
   name: "HomeView",
   data() {
     return {
-      message: "hello from HomeView",
+      homeTabs: [
+        {
+          id: "001",
+          name: "衣服",
+        },
+        {
+          id: "002",
+          name: "鞋子",
+        },
+        {
+          id: "003",
+          name: "裤子",
+        },
+        // {
+        //   id: "004",
+        //   name: "袜子",
+        // },
+      ],
+      index: 0,
     };
   },
   methods: {
-    sendData() {
-      emitter.emit("MESSAGE", this.message);
+    tabClick(index) {
+      this.index = index;
     },
+  },
+  computed: {
+    renderComponent() {
+      return contentList[this.index];
+    },
+  },
+  components: {
+    HomeTabs,
+    TabClothes,
+    TabShoes,
+    TabPants,
   },
 };
 </script>
 
-<style lang="less" scoped>
-.home {
-  background-color: green;
-  padding: 20px;
-}
-</style>
+<style lang="less" scoped></style>
