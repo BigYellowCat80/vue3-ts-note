@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_vue3中使用异步组件后在打包时分包</title>
+  </head>
+  <body>
+    <!-- 步骤： -->
+    <!-- 1. import { defineAsyncComponent } from "vue"; -->
+    <!-- 2. const TabShoes = defineAsyncComponent(() =>
+              import(/* webpackChunkName: "TabShoes" */ "./TabShoes.vue")
+            ); -->
+
+    <!-- defineAsyncComponent函数接受两种类型的参数 -->
+    <!-- 1. 工厂函数（其实就是函数，可以写成箭头函数），该工厂函数需要返回一个promise。defineAsyncComponent(()=>import(/* webpackChunkName: "TabShoes" */ "./TabShoes.vue"))这样写就刚好都符合了 -->
+
+    <!-- 2. 配置对象 -->
+    <!-- 
+      const TabShoes = defineAsyncComponent({
+        loader: import(/* webpackChunkName: "TabShoes" */ "./TabShoes.vue"),
+        loadingComponent: loadingComponent,
+        errorComponent: errorComponent,
+        delay: 2000,
+        onError(err, retry, fail, attempts) {},
+        // err：错误信息
+        // retry：函数，调用retry尝试重新加载
+        // fail：函数，只是加载程序结束退出，不再加载了
+        // attempts记录尝试的次数
+      });
+     -->
+  </body>
+</html>

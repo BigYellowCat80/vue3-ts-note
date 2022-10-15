@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_import函数的使用</title>
+  </head>
+  <body>
+    <!-- 1. import函数返回的就是一个promise，比如引入了一个math模块，需要在打包的时候分包，如下设置： -->
+    <!-- 
+   import(/* webpackChunkName: "math" */ "@/utils/math")
+   .then(({ sum }) => {
+      console.log(sum(100, 200));
+    });
+     -->
+  </body>
+</html>

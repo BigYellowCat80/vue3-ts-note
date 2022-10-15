@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_keep-alive的属性</title>
+  </head>
+  <body>
+    <!-- include，值可以是字符串、正则、数组。根据的是组件内部的name属性匹配 -->
+    <!-- 1. include的值为字符串 -->
+    <!-- <keep-alive include="TabClothes,TabShoes">
+      <component :is="renderContent"></component>
+    </keep-alive> -->
+
+    <!-- 2. include的值为正则 -->
+    <!-- <keep-alive :include="/TabClothes|TabShoes/">
+      <component :is="renderContent"></component>
+    </keep-alive> -->
+
+    <!-- 3. include的值为数组 -->
+    <!-- <keep-alive :include="['TabClothes', 'TabShoes']">
+      <component :is="renderContent"></component>
+    </keep-alive> -->
+
+    <!-- exclude，值可以是字符串、正则、数组。根据的是组件内部的name属性匹配 -->
+
+    <!-- max，值可以是字符串或者数值。最多可以缓存多少个组件实例，一旦达到这个数字，那么缓存队列中最后的那个给销毁掉。举个例子：max为10，当缓存到第11个组件时，第1个就给销毁掉了。这个属性比较少使用 -->
+  </body>
+</html>
